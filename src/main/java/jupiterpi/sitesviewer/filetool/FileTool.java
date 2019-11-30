@@ -1,13 +1,12 @@
-package jupiterpi.filetool;
+package jupiterpi.sitesviewer.filetool;
 
 import java.util.*;
 import java.io.*;
-import javax.swing.*;
 
 public class FileTool
 {
 	private String fileName;
-	private ArrayList file = new ArrayList();
+	private ArrayList<String> file = new ArrayList();
 	
 	public FileTool (String fileName)
 	{
@@ -28,12 +27,12 @@ public class FileTool
 		}
 		catch (IOException x)
 		{
-			JOptionPane.showMessageDialog (null, "Can not load file " + fileName + ". ");
+			System.err.println("Can not load file " + fileName + ". ");
 			System.exit (0);
 		}
 	}
 	
-	public ArrayList getFile ()
+	public ArrayList<String> getFile ()
 	{
 		return file;
 	}
@@ -75,25 +74,13 @@ public class FileTool
 		this.setLine (line, this.getLine (line) + text);
 	}
 	
-	public void saveFile ()
-	{
+	public void saveFile () throws IOException {
 		String input;
-		try
+		BufferedWriter Writer = new BufferedWriter (new FileWriter (fileName));
+		for (int i = 0; i < file.size(); i++)
 		{
-			BufferedWriter Writer = new BufferedWriter (new FileWriter (fileName));
-			for (int i = 0; i < file.size(); i++)
-			{
-				Writer.write (file.get (i) + "\r\n");
-			}
-			Writer.close();
+			Writer.write (file.get (i) + "\r\n");
 		}
-		catch (IOException x)
-		{
-			input = JOptionPane.showInputDialog (null, "Can not write to file " + fileName + ". Cancel process? (Y/n)");
-			if (input.equals ("Y"))
-				System.exit (0);
-			else if (!input.equals ("n"))
-				JOptionPane.showMessageDialog (null, "No valid input. Please redo!");
-		}
+		Writer.close();
 	}
 }

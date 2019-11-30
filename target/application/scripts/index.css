@@ -1,0 +1,95 @@
+body
+{
+    background-color: #d3d3d3; /* lightgrey */
+    color: #2f4f4f; /* darkslategrey */
+    font-family: monospace;
+    padding-top: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 0px;
+}
+
+img.big-logo, img.logo {
+    margin-left: 30px;
+    border-style: none;
+}
+
+img.big-logo {
+    height: 75px;
+}
+
+img.logo {
+    height: 35px;
+}
+
+h1.title-kaye
+{
+    color: #b8860b; /* darkgoldenrod */
+    margin-left: 50px;
+}
+
+div.border
+{
+    border-style: solid;
+    border-color: #2f4f4f; /* darkslategrey */
+    padding: 7.5px;
+}
+
+td
+{
+    margin-right: 5px;
+}
+
+img, video
+{
+    border-style: solid;
+    border-color: #2f4f4f; /* darkslategrey */
+}
+
+img
+{
+    height: 202px;
+}
+
+img.icon
+{
+    height: 75px;
+    border-style: none;
+}
+
+img.smallicon
+{
+    height: 50px;
+    border-style: none;
+}
+
+td.icon_container
+{
+    padding-right: 30px;
+}
+
+video
+{
+    width: 35%;
+}
+
+div.app
+{
+    background-color: #b8870b1c;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.annotation
+{
+    font-size: 80%;
+}
+
+div.celebration
+{
+    font-weight: bold;
+    color: #b8860b;
+    width: 100%;
+    text-align: center;
+    font-size: 200%;
+}

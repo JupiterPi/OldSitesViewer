@@ -1,4 +1,4 @@
 package jupiterpi.sitesviewer.exceptions;
 
-public class PageDoesNotExistException {
+public class PageDoesNotExistException extends Exception {
 }
