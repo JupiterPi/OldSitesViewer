@@ -20,11 +20,6 @@ public class Controller {
         return loader.getPage(pageName);
     }
 
-    @GetMapping("/meta/{pageName}")
-    public String getAssets(@PathVariable String pageName) throws PageDoesNotExistException {
-        return loader.getMeta(pageName);
-    }
-
     @GetMapping("/scripts/{scriptName}")
     public String getScript(@PathVariable String scriptName) {
         return loader.getScript(scriptName);

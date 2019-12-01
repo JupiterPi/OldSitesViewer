@@ -1,0 +1,7 @@
+{
+    "meta":{
+        "title":"Home | Mysite"
+    }, 
+    "container":"standard.json", 
+    "content":"home.html"
+}

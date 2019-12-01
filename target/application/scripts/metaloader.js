@@ -1,4 +1,5 @@
-function loadMeta(pageName) {
-    var meta = getJSONSync("/meta/" + pageName);
-    document.title = meta.title;
+function setMeta(key, value) {
+    switch (key) {
+        case "title": document.title = value; break;
+    }
 }

@@ -1,0 +1,7 @@
+{
+    "meta":{
+        "title":"Simple Page | SitesViewer"
+    },
+    "container":"standard.json",
+    "content":"simplepage.html"
+}
