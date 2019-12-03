@@ -11,6 +11,25 @@ import java.util.Map;
 @Service
 public class Loader {
     public String getPage(String pageName) {
+        ArrayList<String> pageParts = getPageParts(pageName);
+        return itemsToString(pageParts);
+    }
+
+    public String getPageWithPathVariables(String pageName, String[] pathVariables) {
+        ArrayList<String> pageParts = getPageParts(pageName);
+
+        ArrayList<String> pathVariableLines = new ArrayList<String>();
+        ArrayList<String> putPathVaribaleParts = getInternalSource("putPathVariable.html");
+        for (String pathVariable : pathVariables) {
+            pathVariableLines.add(putPathVaribaleParts.get(0) + pathVariable + putPathVaribaleParts.get(1));
+        }
+        String pathVariableLinesString = listToString(pathVariableLines);
+
+        pageParts.add(1, pathVariableLinesString);
+        return itemsToString(pageParts);
+    }
+
+    private ArrayList<String> getPageParts(String pageName) {
         JSONObject pageData = getJSONFromFile(".\\pages\\" + pageName + ".json");
 
         String containerName = (String) pageData.get("container");
@@ -23,23 +42,30 @@ public class Loader {
         String pageFileName = (String) pageData.get("content");
         String page = getFileAsString(".\\pages\\" + pageFileName);
 
+        String metaLines = "";
         Map<String, String> meta = (Map<String, String>) pageData.get("meta");
         for (String key : meta.keySet()) {
             String value = meta.get(key);
             ArrayList<String> metaParts = getInternalSource("setMeta.html");
             String metaLine = metaParts.get(0) + key + metaParts.get(1) + value + metaParts.get(2);
-            page = metaLine + "\n" + page;
+            metaLines = metaLine + "\n" + metaLines;
         }
 
-        return containerTop + page + containerBottom;
+        ArrayList<String> pageParts = new ArrayList<String>();
+        pageParts.add(containerTop);
+        pageParts.add(metaLines);
+        pageParts.add(page);
+        pageParts.add(containerBottom);
+
+        return pageParts;
     }
 
     public ArrayList<String> getInternalSource(String name) {
         return new FileTool(".\\internal\\" + name).getFile();
     }
 
-    public String getScript(String scriptName) {
-        return getFileAsString(".\\scripts\\" + scriptName);
+    public String getRes(String resName) {
+        return getFileAsString(".\\res\\" + resName);
     }
 
     public JSONObject getJSONFromFile(String fileName) {

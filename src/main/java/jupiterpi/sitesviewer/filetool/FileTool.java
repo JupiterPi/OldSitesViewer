@@ -25,10 +25,8 @@ public class FileTool
 			}
 			Reader.close();
 		}
-		catch (IOException x)
-		{
+		catch (IOException x) {
 			System.err.println("Can not load file " + fileName + ". ");
-			System.exit (0);
 		}
 	}
 	

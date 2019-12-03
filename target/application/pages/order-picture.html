@@ -1,0 +1,9 @@
+<h1>Order a Picture</h1>
+<p>Here a preview of the picture you want to order:</p>
+<img height="300px" id="image_preview"></img>
+<script>
+var pictureSrc = getPathVariables()[0];
+pictureSrc = "/pic/" + pictureSrc;
+var img = element("image_preview");
+img.src = pictureSrc;
+</script>

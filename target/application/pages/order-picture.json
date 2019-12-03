@@ -1,0 +1,7 @@
+{
+    "meta":{
+        "title":"Order a Picture | SitesViewer"
+    }, 
+    "container":"standard.json", 
+    "content":"order-picture.html"
+}
